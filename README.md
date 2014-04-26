@@ -1,30 +1,26 @@
-trapemail
-=========
+TrapSmtp
+========
 
-Extend Network/Email/CakeEmail allowing override original recipients
+Extend Network/Email/SmtpTransport allowing override original recipients.
 
 Install
 -------
 
 Copy content of Lib folder into your app/Lib.
+Or add it into your project as a git submodule.
 
 Usage
 -----
-Whenever you need to send email, ensure this class is loaded:
+Add to your email config array on app/Config/email.php a new element 'realRecipients', and spec 'TrapSmpt' for 'transport'.
 ```php
-App::uses('TrapEmail', 'Lib/Network/Email');
+public $default = array(
+		'transport' => 'TrapSmtp',  // For plugin install use 'TrapSmtp.TrapSmtp'
+		...
+		'realRecipients' => 'trap@domain.com',
+	);
 ```
 
-add to your config array a new element 'realRecipients': 
-```php
-$config['realRecipients'] = array('trap@domain.com');
-```
-use $config to create a new TrapEmail object:
-```php
-$email = new TrapEmail($config);
-```
-
-after ```$email->send()``` you will get an email in trap@domain.com with original recipients in the header as below:
+After ```$email->send()``` you will get an email in trap@domain.com with original recipients in the header as below:
 * X-intended-to
 * X-intended-cc
 * X-intended-bcc
