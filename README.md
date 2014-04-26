@@ -7,7 +7,11 @@ Install
 -------
 
 Copy content of Lib folder into your app/Lib.
-Or add it into your project as a git submodule.
+
+Or add it into your project as a git submodule:
+```bash
+git submodule add https://github.com/wnasich/TrapSmtp.git app/Plugin/TrapSmtp
+```
 
 Usage
 -----
