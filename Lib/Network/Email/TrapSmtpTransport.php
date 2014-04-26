@@ -12,7 +12,7 @@ class TrapSmtpTransport extends SmtpTransport {
 	 * @throws InvalidArgumentException
 	 */
 	public function send(CakeEmail $email) {
-		if (empty($this->_config['realRecipients']) {
+		if (empty($this->_config['realRecipients'])) {
 			throw new InvalidArgumentException(__('Must set a real recipients'));
 		} else {
 			$originalTo = $email->to();
